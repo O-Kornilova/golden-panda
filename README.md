@@ -79,6 +79,24 @@ GET http://localhost:3000/api/submissions
 
 ---
 
+## Viewing User Data
+
+All quiz submissions are saved to `data/submissions.json` on the server.
+
+To view collected data (time on page + all quiz answers) visit:
+
+```
+GET https://golden-panda.onrender.com/api/submissions
+```
+
+Each record contains:
+
+- `sessionId` — unique user session
+- `answers` — all quiz responses
+- `timeSpentSeconds` — active time on page
+- `completedAt` — submission timestamp
+- `isPartial` — true if user left before finishing the quiz
+
 ## Deployment
 
 Deployed on [Render](https://render.com):

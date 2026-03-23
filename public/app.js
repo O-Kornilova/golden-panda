@@ -95,7 +95,18 @@ function showStep (n) {
   )
   if (next) next.classList.add('active')
   currentStep = n
-  if (n !== 'result') setProgress(n)
+
+  const label = document.getElementById('stepLabel')
+  const bar = document.querySelector('.quiz-progress-bar')
+
+  if (n === 'result' || n === 'loading') {
+    if (label) label.style.display = 'none'
+    if (bar) bar.style.display = 'none'
+  } else {
+    if (label) label.style.display = 'block'
+    if (bar) bar.style.display = 'block'
+    setProgress(n)
+  }
 }
 
 function advanceToStep (n) {
