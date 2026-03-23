@@ -79,9 +79,9 @@ let currentStep = 1
 
 // DOM refs
 const progressFill = document.getElementById('progressFill')
-const stepLabel = document.getElementById('stepLabel')
 
 function setProgress (step) {
+  if (!progressFill) return
   const pct = ((step - 1) / TOTAL_STEPS) * 100
   progressFill.style.width = pct + '%'
 }
@@ -141,18 +141,23 @@ nextStep4Btn.addEventListener('click', () => {
   const val = parseFloat(currentWeightInput.value)
   if (!val || val < 30 || val > 300) {
     weightError.classList.remove('hidden')
+    currentWeightInput.classList.add('invalid')
     currentWeightInput.focus()
     return
   }
   weightError.classList.add('hidden')
+  currentWeightInput.classList.remove('invalid')
   answers.currentWeight = val
 
   // Pre-fill display for next step
   document.getElementById('currentWeightDisplay').textContent = val
   advanceToStep(5)
 })
+currentWeightInput.addEventListener('input', () => {
+  weightError.classList.add('hidden')
+  currentWeightInput.classList.remove('invalid')
+})
 
-currentWeightInput.addEventListener('input', () => weightError.classList.add('hidden'))
 currentWeightInput.addEventListener('keydown', e => {
   if (e.key === 'Enter') nextStep4Btn.click()
 })
@@ -170,19 +175,23 @@ nextStep5Btn.addEventListener('click', () => {
 
   if (!val || val < 30 || val >= current) {
     targetError.classList.remove('hidden')
+    targetWeightInput.classList.add('invalid')
     targetWeightInput.focus()
     return
   }
   targetError.classList.add('hidden')
+  targetWeightInput.classList.remove('invalid')
   answers.targetWeight = val
   advanceToStep(6)
 })
 
-targetWeightInput.addEventListener('input', () => targetError.classList.add('hidden'))
+targetWeightInput.addEventListener('input', () => {
+  targetError.classList.add('hidden')
+  targetWeightInput.classList.remove('invalid')
+})
 targetWeightInput.addEventListener('keydown', e => {
   if (e.key === 'Enter') nextStep5Btn.click()
 })
-
 // ──────────────────────────────────────────────
 //  STEP 6 — Joint Areas (multi-select)
 // ──────────────────────────────────────────────
