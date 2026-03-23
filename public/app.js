@@ -84,6 +84,8 @@ function setProgress (step) {
   if (!progressFill) return
   const pct = ((step - 1) / TOTAL_STEPS) * 100
   progressFill.style.width = pct + '%'
+  const label = document.getElementById('stepLabel')
+  if (label) label.textContent = `Step ${step} of ${TOTAL_STEPS}`
 }
 
 function showStep (n) {
