@@ -622,7 +622,23 @@ a {
   cursor: not-allowed;
   transform: none;
 }
-
+.loading-screen {
+  text-align: center;
+  padding: 40px 0;
+}
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--teal-light);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 20px;
+}
+.loading-text {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
 /* Result screen */
 .result-screen {
   text-align: center;
@@ -685,6 +701,27 @@ a {
 }
 .result-save-status.error {
   color: var(--cross-red);
+}
+.result-save-status::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--teal);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.result-save-status.saved::before,
+.result-save-status.error::before {
+  display: none;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ── About Section ── */
@@ -782,6 +819,41 @@ a {
 
   .feature-block {
     grid-template-columns: 1fr;
+  }
+  .cmp-row {
+    grid-template-columns: 1fr 90px 90px;
+  }
+
+  .cmp-selida,
+  .cmp-other {
+    padding: 10px 8px;
+  }
+
+  .cmp-selida--top {
+    padding: 14px 8px;
+    font-size: 0.85rem;
+  }
+
+  .cmp-other--header {
+    padding: 14px 8px;
+    font-size: 0.85rem;
+  }
+
+  .selida-logo-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .cmp-feature {
+    padding: 10px 0;
+    font-size: 0.82rem;
+  }
+
+  .check,
+  .cross {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
   }
 
   /* Offer box stacks */

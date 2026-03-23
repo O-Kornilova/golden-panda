@@ -326,7 +326,13 @@
               </div>
               <button class="btn btn--teal quiz-next" id="nextStep6" disabled>Next →</button>
             </div>
-
+            <!-- Step loading -->
+            <div class="quiz-step" id="step-loading">
+              <div class="loading-screen">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Analyzing your answers…</p>
+              </div>
+            </div>
             <!-- Step 7: Results loading → auto submit -->
             <div class="quiz-step" id="step-result">
               <div class="result-screen">
@@ -409,6 +415,6 @@
       </p>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
   </body>
 </html>

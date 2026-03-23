@@ -88,7 +88,9 @@ function setProgress (step) {
 
 function showStep (n) {
   document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'))
-  const next = document.getElementById(n === 'result' ? 'step-result' : `step-${n}`)
+  const next = document.getElementById(
+    n === 'result' ? 'step-result' : n === 'loading' ? 'step-loading' : `step-${n}`
+  )
   if (next) next.classList.add('active')
   currentStep = n
   if (n !== 'result') setProgress(n)
@@ -211,7 +213,11 @@ document.querySelectorAll('[data-step="6"]').forEach(btn => {
 })
 
 nextStep6Btn.addEventListener('click', () => {
-  showResultScreen()
+  showStep('loading')
+  document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  setTimeout(() => {
+    showResultScreen()
+  }, 1800)
 })
 
 // ──────────────────────────────────────────────
