@@ -766,7 +766,6 @@ a {
   margin: 0 auto;
   max-width: var(--max-w);
   padding: 48px 0;
-  margin-bottom: 48px;
 }
 .about-inner {
   display: grid;
@@ -814,10 +813,10 @@ a {
 
 /* ── Footer ── */
 .site-footer {
-  border-top: 1px solid var(--border);
   padding: 28px 24px;
   text-align: center;
-  background: var(--bg-alt);
+  background: var(--bg);
+  border-top: none;
 }
 .footer-logo {
   display: inline-flex;
